@@ -1,0 +1,31 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "geohash-py"
+description = "Rust-powered library for geohashing, designed for high-performance spatial operations."
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+authors = [
+    {name = "Veli Eroglu", email = "velieroglu@protonmail.com"},
+]
+
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+include = [
+    { format = "sdist", path = ".cargo/*" },
+    { format = "sdist", path = "build.rs" },
+    { format = "sdist", path = "Cargo.lock" },
+    { format = "sdist", path = "include/**/*" },
+]
